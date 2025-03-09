@@ -7,3 +7,5 @@ I developed a comprehensive interactive dashboard in R-Studio using R and an Exc
 ## Project Objective
 The objective of this project is to analyze COVID-19 vaccination data across Indian states and Union Territories. The analysis aims to provide insights into vaccination coverage, dose distribution, and booster dose uptake. By visualizing trends and patterns, the dashboard helps stakeholders understand progress, identify gaps, and optimize vaccination strategies.
 
+## Dataset used
+- <a href="https://github.com/satishrdudhat/R-Data-Analytics-Project-Covid-India-Statewise-Vaccine/blob/main/COVID-19%20India%20Statewise%20Vaccine%20Data.csv">View Dataset</a>
