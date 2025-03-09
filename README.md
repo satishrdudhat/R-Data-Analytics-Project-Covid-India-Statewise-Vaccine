@@ -55,12 +55,38 @@ The objective of this project is to analyze COVID-19 vaccination data across Ind
     - Interactive Tooltips: Allow users to explore data dynamically.
 
 ## Dashboard
-
+Dashboard One
 ![Screenshot (8015)](https://github.com/user-attachments/assets/53107aa6-2a06-492f-b35a-343470a34980)  <br>
-
+Dashboard Second
 ![Screenshot (8016)](https://github.com/user-attachments/assets/717d86c0-44ec-45fb-a91b-9f80b0fc7f86)  <br>
-
+Dashboard Third
 ![Screenshot (8017)](https://github.com/user-attachments/assets/906dfd20-37e0-46c1-a290-d0f6e442ac43)  
+
+## Project Insights
+
+1.	Overall Vaccination Coverage:
+    - India has administered a significant number of COVID-19 vaccine doses.
+    - Some states have a much higher vaccination rate compared to others.
+      
+2.	Dose-1 vs Dose-2 Gap:
+    - Several states show a large gap between Dose-1 and Dose-2 administration, indicating a need for awareness campaigns to ensure full vaccination.
+      
+3.	Booster Dose Challenges:
+    - The uptake of precautionary (booster) doses is lower than expected in many states.
+    - States with higher precautionary dose coverage have likely implemented better awareness programs.
+      
+4.	Age-wise Disparities:
+    - The vaccination rate among younger populations (12-18 years) varies significantly between states.
+    - Some states lag in vaccinating school-aged children, which may affect herd immunity.
+      
+5.	Top & Bottom Performing States:
+    - States with high population density often show both high vaccination numbers and significant gaps in booster dose coverage.
+    - Low-performing states require targeted interventions to increase vaccine adoption.
+
+## Final Conclusion
+
+The vaccination rollout in India has been largely successful, but disparities exist across states. While some states have achieved high vaccination coverage, others still need targeted efforts to improve dose completion rates and booster uptake. Interactive visualizations provide a deeper understanding of regional trends, enabling policymakers to make data-driven decisions to enhance COVID-19 vaccine outreach and public health impact.
+
 
 
 
