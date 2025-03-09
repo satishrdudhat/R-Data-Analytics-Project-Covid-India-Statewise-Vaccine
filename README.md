@@ -15,26 +15,41 @@ The objective of this project is to analyze COVID-19 vaccination data across Ind
 ## Key Questions (KPIs)
 
 1.	Total Vaccination Trends
-    o How many total doses have been administered across India?
-    o Which states have the highest and lowest vaccination rates?
+    - How many total doses have been administered across India?
+    - Which states have the highest and lowest vaccination rates?
 2.	Dose-1 vs Dose-2 Coverage
-    o How does Dose-1 coverage compare to Dose-2 across states?
-    o What percentage of the population is fully vaccinated?
+    - How does Dose-1 coverage compare to Dose-2 across states?
+    - What percentage of the population is fully vaccinated?
 3.	Booster Dose Administration
-    o What is the distribution of precautionary (booster) doses across different states?
-    o Which states have the highest and lowest booster dose coverage?
+    - What is the distribution of precautionary (booster) doses across different states?
+    - Which states have the highest and lowest booster dose coverage?
 4.	Age-wise Vaccination Patterns
-    o How does vaccination coverage vary across different age groups (12-14 and 15-18 years)?
+    - How does vaccination coverage vary across different age groups (12-14 and 15-18 years)?
 5.	State-wise Performance
-    o Which are the top-performing states in terms of vaccination coverage?
-    o Which states need policy interventions to improve coverage?
+    - Which are the top-performing states in terms of vaccination coverage?
+    - Which states need policy interventions to improve coverage?
 
 ## Dashboard Interaction 
  <a href="https://github.com/satishrdudhat/R-Data-Analytics-Project-Covid-India-Statewise-Vaccine/blob/main/Screenshot%20(8015).png">View Dashboard One</a></br>
  <a href="https://github.com/satishrdudhat/R-Data-Analytics-Project-Covid-India-Statewise-Vaccine/blob/main/Screenshot%20(8016).png">View Dashboard Second</a></br>
  <a href="https://github.com/satishrdudhat/R-Data-Analytics-Project-Covid-India-Statewise-Vaccine/blob/main/Screenshot%20(8017).png">View Dashboard Third</a>
 
+ ## Process
  
+1.	Data Collection & Cleaning:</br>
+    - Imported state-wise COVID-19 vaccination data in CSV format.</br>
+    - Replaced missing values with zero to ensure data consistency.
+  	
+3.	Feature Engineering:</br>
+    - Created new metrics such as Vaccination Coverage %, Fully Vaccinated %, and Booster Coverage %.</br>
+    - Filtered the top and bottom 5 states based on full vaccination percentage.
+  	
+5.	Visualization & Analysis:</br>
+    - Scatterplot & Bar Charts: Show overall vaccination progress per state.</br>
+    - Stacked Bar Charts: Display vaccination trends by age group.</br>
+    - Pie Chart: Represents the proportion of precautionary doses administered.</br>
+    - Interactive Tooltips: Allow users to explore data dynamically.
 
+## Dashboard
 
 
