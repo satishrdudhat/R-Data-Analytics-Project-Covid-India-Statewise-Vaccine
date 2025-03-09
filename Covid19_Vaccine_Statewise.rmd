@@ -1,0 +1,144 @@
+---
+title: "COVID-19 India Statewise Vaccine Data Analysis Dashboard"
+author: "Satish Dudhat"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    social: menu
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(plotly)
+library(tidyverse)
+library(treemap)
+library(knitr)
+
+# Load dataset
+
+#df <- read_csv(file.choose())  
+df <- read_csv("C:/Users/hp/Desktop/google learning/Data Anal/R Programming/R-Projects/archive (4)/COVID-19 India Statewise Vaccine Data.csv")
+
+# Data Cleaning & Transformation
+
+df <- df %>% 
+
+replace_na(list(Total_Vaccination_Doses = 0, Dose_1 = 0, Dose_2 = 0, Precaution_18_59 = 0)) %>%
+  
+mutate(
+  Vaccination_Coverage = (Total_Vaccination_Doses / Population) * 100,
+  Booster_Coverage = (Precaution_18_59 / Population) * 100,
+  Fully_Vaccinated_Percentage = (Dose_2 / Population) * 100,
+  Partially_Vaccinated_Percentage = (Dose_1 / Population) * 100)
+
+# Key Statistics
+
+total_vaccination <- sum(df$Total_Vaccination_Doses, na.rm = TRUE)
+total_dose1 <- sum(df$Dose_1, na.rm = TRUE)
+total_dose2 <- sum(df$Dose_2, na.rm = TRUE)
+total_precaution <- sum(df$Precaution_18_59, na.rm = TRUE)
+
+cat("Total Vaccination Doses Administered in India:", total_vaccination, "\n")
+cat("Total Dose 1 Administered:", total_dose1, "\n")
+cat("Total Dose 2 Administered:", total_dose2, "\n")
+cat("Total Precaution Doses (18-59 age group):", total_precaution, "\n")
+
+# Top & Bottom 5 States
+
+top_states <- df %>% arrange(desc(Fully_Vaccinated_Percentage)) %>% head(5)
+bottom_states <- df %>% arrange(Fully_Vaccinated_Percentage) %>% head(5)
+```
+
+Statewise Vaccination
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### Vaccination Doses per State (Scatterplot)
+
+```{r}
+p1 <- ggplot(df, aes(x = reorder(State_UTs, Total_Vaccination_Doses), y = Total_Vaccination_Doses, text = paste('State:', State_UTs, '<br>Total Doses:', Total_Vaccination_Doses))) +
+  geom_point(color = "blue", size = 2) +
+  coord_flip() +
+  labs(title = "Total Vaccination Doses vs State", x = "State/UT", y = "Total Vaccination Doses") +
+  theme_minimal()
+
+ggplotly(p1, tooltip = "text")
+
+```
+
+### Top 5 States with Highest Vaccination Coverage
+
+```{r}
+p2 <- ggplot(top_states, aes(x = reorder(State_UTs, Total_Vaccination_Doses), y = Total_Vaccination_Doses, fill = State_UTs)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(title = "Top 5 States with Highest Vaccinations", x = "State/UTs", y = "Total Vaccination Doses") +
+  scale_fill_brewer(palette = "Set3")
+
+ggplotly(p2, tooltip = c("State_UTs", "Total_Vaccination_Doses"))
+
+```
+Dose Comparison / Booster Dose
+=======================================================================
+Row
+-----------------------------------------------------------------------
+
+### Dose-1 vs Dose-2 Comparison
+
+```{r}
+p3 <- ggplot(df, aes(x = reorder(State_UTs, Dose_1))) +
+  geom_bar(aes(y = Dose_1, text = paste('State:', State_UTs, '<br>Dose 1:', Dose_1)), stat = "identity", fill = "blue", alpha = 0.6) +
+  geom_bar(aes(y = Dose_2, text = paste('State:', State_UTs, '<br>Dose 2:', Dose_2)), stat = "identity", fill = "orange", alpha = 0.6) +
+  coord_flip() +
+  labs(title = "Dose-1 vs Dose-2 Comparison Across States", x = "State/UTs", y = "Doses Administered")
+
+ggplotly(p3, tooltip = "text")
+
+```
+### Booster Dose Coverage by State
+
+```{r}
+p4 <- ggplot(df, aes(x = reorder(State_UTs, Precaution_18_59), y = Precaution_18_59, text = paste('State:', State_UTs, '<br>Booster Coverage:', Precaution_18_59))) +
+  geom_bar(stat = "identity", fill = "purple") +
+  coord_flip() +
+  labs(title = "Booster Dose Coverage by State", x = "State/UTs", y = "Booster Coverage (%)")
+
+ggplotly(p4, tooltip = "text")
+
+```
+Age-wise Vaccination & Precaution Dose
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### Interactive Stacked Bar Chart for Age-wise Vaccination
+```{r}
+df_age <- df %>%
+  select(State_UTs, Dose_1_15_18, Dose_2_15_18, Dose_1_12_14, Dose_2_12_14) %>%
+  pivot_longer(cols = -State_UTs, names_to = "Dose_Type", values_to = "Count")
+
+p5 <- ggplot(df_age, aes(x = State_UTs, y = Count, fill = Dose_Type, text = paste("Dose Type:", Dose_Type, "<br>Count:", Count))) +
+  geom_bar(stat = "identity", position = "stack") +
+  coord_flip() +
+  labs(title = "Age-wise Vaccination Coverage", x = "State/UT", y = "Doses Administered") +
+  theme_minimal()
+ggplotly(p5, tooltip = "text")
+```
+
+### Pie Chart for Precaution Dose Coverage
+```{r}
+df_precaution <- df %>%
+  summarize(Precaution = sum(Precaution_18_59, na.rm = TRUE),
+            Other = sum(Total_Vaccination_Doses, na.rm = TRUE) - sum(Precaution_18_59, na.rm = TRUE)) %>%
+  pivot_longer(cols = everything(), names_to = "Category", values_to = "Count")
+
+plot_ly(df_precaution, labels = ~Category, values = ~Count, type = "pie",
+        textinfo = "label+percent", hoverinfo = "text",
+        text = ~paste(Category, "<br>Total Count:", Count),
+        marker = list(colors = c("#deb810", "#dbd7c3"))) %>%
+  layout(title = "Precaution Dose Coverage")
