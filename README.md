@@ -17,14 +17,18 @@ The objective of this project is to analyze COVID-19 vaccination data across Ind
 1.	Total Vaccination Trends
     - How many total doses have been administered across India?
     - Which states have the highest and lowest vaccination rates?
+      
 2.	Dose-1 vs Dose-2 Coverage
     - How does Dose-1 coverage compare to Dose-2 across states?
     - What percentage of the population is fully vaccinated?
+      
 3.	Booster Dose Administration
     - What is the distribution of precautionary (booster) doses across different states?
     - Which states have the highest and lowest booster dose coverage?
+      
 4.	Age-wise Vaccination Patterns
     - How does vaccination coverage vary across different age groups (12-14 and 15-18 years)?
+      
 5.	State-wise Performance
     - Which are the top-performing states in terms of vaccination coverage?
     - Which states need policy interventions to improve coverage?
@@ -36,20 +40,29 @@ The objective of this project is to analyze COVID-19 vaccination data across Ind
 
  ## Process
  
-1.	Data Collection & Cleaning:</br>
-    - Imported state-wise COVID-19 vaccination data in CSV format.</br>
+1.	Data Collection & Cleaning:
+    - Imported state-wise COVID-19 vaccination data in CSV format.
     - Replaced missing values with zero to ensure data consistency.
   	
-3.	Feature Engineering:</br>
-    - Created new metrics such as Vaccination Coverage %, Fully Vaccinated %, and Booster Coverage %.</br>
+3.	Feature Engineering:
+    - Created new metrics such as Vaccination Coverage %, Fully Vaccinated %, and Booster Coverage %.
     - Filtered the top and bottom 5 states based on full vaccination percentage.
   	
-5.	Visualization & Analysis:</br>
-    - Scatterplot & Bar Charts: Show overall vaccination progress per state.</br>
-    - Stacked Bar Charts: Display vaccination trends by age group.</br>
-    - Pie Chart: Represents the proportion of precautionary doses administered.</br>
+5.	Visualization & Analysis:
+    - Scatterplot & Bar Charts: Show overall vaccination progress per state.
+    - Stacked Bar Charts: Display vaccination trends by age group.
+    - Pie Chart: Represents the proportion of precautionary doses administered.
     - Interactive Tooltips: Allow users to explore data dynamically.
 
 ## Dashboard
+
+![Screenshot (8015)](https://github.com/user-attachments/assets/53107aa6-2a06-492f-b35a-343470a34980)  <br>
+
+![Screenshot (8016)](https://github.com/user-attachments/assets/717d86c0-44ec-45fb-a91b-9f80b0fc7f86)  <br>
+
+![Screenshot (8017)](https://github.com/user-attachments/assets/906dfd20-37e0-46c1-a290-d0f6e442ac43)  
+
+
+
 
 
