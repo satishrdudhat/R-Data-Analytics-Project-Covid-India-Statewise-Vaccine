@@ -86,9 +86,3 @@ Dashboard Third
 ## Final Conclusion
 
 The vaccination rollout in India has been largely successful, but disparities exist across states. While some states have achieved high vaccination coverage, others still need targeted efforts to improve dose completion rates and booster uptake. Interactive visualizations provide a deeper understanding of regional trends, enabling policymakers to make data-driven decisions to enhance COVID-19 vaccine outreach and public health impact.
-
-
-
-
-
-
